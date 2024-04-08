@@ -16,6 +16,7 @@ const deposit = () => {
         if (isNaN(numberDepositAmount) || numberDepositAmount <= 0) {
         console.log("Invalid deposit amount, try again.");
         } else {
+            console.log("You've Deposited " + numberDepositAmount + "$! Good luck!");
             return numberDepositAmount;
         }
     }
@@ -33,7 +34,23 @@ const getNumberOfLines = () => {
             return numberOfLines;
         }
     }
-}
+};
 
-const depositAmount = deposit();
+const getBet = (balance) => {
+    while(true) {
+        const bet = prompt("Enter the total bet: ");
+        const numberBet = parseFloat(bet);
+        const finalBalance = (numberBet - balance);
+
+        if (isNaN(numberBet) || numberBet <= 0 || numberBet > balance) {
+        console.log("Invalid Bet you have " + balance + "$ in your balance, try again.");
+        } else {
+            console.log("You are betting with " + numberBet + "$!" + "! Total Balance " + finalBalance + "$! Good luck!");
+            return numberBet;
+        }
+    }
+};
+
+let balance = deposit();
 const numberOfLines = getNumberOfLines();
+const bet = getBet(balance);
